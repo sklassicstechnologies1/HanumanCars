@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap location (you'll need to create this later)
+Sitemap: https://hanumancars.com/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+# Allow important pages
+Allow: /cars/
+Allow: /about/
+Allow: /help/
+Allow: /contact/ 
