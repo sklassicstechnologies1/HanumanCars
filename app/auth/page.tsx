@@ -366,6 +366,7 @@ export default function AuthPage() {
                   <Button
                     onClick={handleSendOtp}
                     disabled={isLoading}
+                    
                     className="w-full h-12 text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 glow"
                   >
                     {isLoading ? (
@@ -376,6 +377,7 @@ export default function AuthPage() {
                           repeat: Number.POSITIVE_INFINITY,
                           ease: "linear",
                         }}
+                        
                         className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
                       />
                     ) : (
@@ -398,7 +400,7 @@ export default function AuthPage() {
                       placeholder="Enter 6-digit code"
                       value={otp}
                       onChange={(e) => setOtp(e.target.value)}
-                      className="pl-10 glass border-white/30 focus:border-green-400 text-center text-lg tracking-widest"
+                      className="pl-10 glass border-white/30 focus:border-green-400 text-center text-lg text-align:center tracking-widest"
                       maxLength={6}
                     />
                   </div>
@@ -406,7 +408,8 @@ export default function AuthPage() {
                   <Button
                     onClick={handleAuth}
                     disabled={isLoading}
-                    className="w-full h-12 text-lg font-semibold bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 glow"
+                    //  className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 glow"
+                     className="w-full h-12 text-lg font-semibold bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 glow"
                   >
                     {isLoading ? (
                       <motion.div

@@ -393,98 +393,106 @@ function CarsPageContent() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="glass-dark border-white/20">
-                <SheetHeader>
-                  <SheetTitle className="text-white">Advanced Filters</SheetTitle>
-                </SheetHeader>
-                <div className="mt-6 space-y-6">
-                  {/* Fuel Type */}
-                  <div>
-                    <label className="text-sm font-medium text-gray-300 mb-2 block">Fuel Type</label>
-                    <CustomDropdown
-                      options={filterOptions.fuelTypes}
-                      value={filters.fuelType}
-                      onChange={(value) => handleFilterChange('fuelType', value)}
-                      placeholder="All Fuel Types"
-                    />
-                  </div>
+  <SheetHeader>
+    <SheetTitle className="text-white">Advanced Filters</SheetTitle>
+  </SheetHeader>
+  <div className="flex flex-col h-[calc(100%-60px)]">
+    <div className="space-y-6 overflow-y-auto pb-4">
+      {/* Fuel Type */}
+      <div>
+        <label className="text-sm font-medium text-gray-300 mb-2 block">Fuel Type</label>
+        <CustomDropdown
+          options={filterOptions.fuelTypes}
+          value={filters.fuelType}
+          onChange={(value) => handleFilterChange('fuelType', value)}
+          placeholder="All Fuel Types"
+        />
+      </div>
 
-                  {/* Seats */}
-                  <div>
-                    <label className="text-sm font-medium text-gray-300 mb-2 block">Number of Seats</label>
-                    <CustomDropdown
-                      options={filterOptions.seatOptions}
-                      value={filters.seats}
-                      onChange={(value) => handleFilterChange('seats', value)}
-                      placeholder="All Seats"
-                    />
-                  </div>
+      {/* Seats */}
+      <div>
+        <label className="text-sm font-medium text-gray-300 mb-2 block">Number of Seats</label>
+        <CustomDropdown
+          options={filterOptions.seatOptions}
+          value={filters.seats}
+          onChange={(value) => handleFilterChange('seats', value)}
+          placeholder="All Seats"
+        />
+      </div>
 
-                  {/* Vehicle Color */}
-                  <div>
-                    <label className="text-sm font-medium text-gray-300 mb-2 block">Vehicle Color</label>
-                    <CustomDropdown
-                      options={filterOptions.vehicleColors}
-                      value={filters.vehicleColor}
-                      onChange={(value) => handleFilterChange('vehicleColor', value)}
-                      placeholder="All Colors"
-                    />
-                  </div>
+      {/* Vehicle Color */}
+      <div>
+        <label className="text-sm font-medium text-gray-300 mb-2 block">Vehicle Color</label>
+        <CustomDropdown
+          options={filterOptions.vehicleColors}
+          value={filters.vehicleColor}
+          onChange={(value) => handleFilterChange('vehicleColor', value)}
+          placeholder="All Colors"
+        />
+      </div>
 
-                  {/* Price Range */}
-                  <div>
-                    <label className="text-sm font-medium text-gray-300 mb-2 block">Price Range (₹/day)</label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <Input
-                        type="number"
-                        placeholder="Min"
-                        value={filters.priceRange[0]}
-                        onChange={(e) => handleFilterChange('priceRange', [parseInt(e.target.value) || 0, filters.priceRange[1]])}
-                        className="glass border-white/30 text-white"
-                      />
-                      <Input
-                        type="number"
-                        placeholder="Max"
-                        value={filters.priceRange[1]}
-                        onChange={(e) => handleFilterChange('priceRange', [filters.priceRange[0], parseInt(e.target.value) || 10000])}
-                        className="glass border-white/30 text-white"
-                      />
-                    </div>
-                  </div>
+      {/* Price Range */}
+      <div>
+        <label className="text-sm font-medium text-gray-300 mb-2 block">Price Range (₹/day)</label>
+        <div>
+          <div className="space-y-4">
+            <div className="text-center text-lg font-medium text-white">
+              ₹{filters.priceRange[1]}
+            </div>
+            <input
+              type="range"
+              min="1000"
+              max="10000"
+              step="500"
+              value={filters.priceRange[1]}
+              onChange={(e) => handleFilterChange('priceRange', [1000, parseInt(e.target.value)])}
+              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+              style={{
+                accentColor: '#3b82f6',
+              }}
+            />
+            <div className="flex justify-between text-xs text-gray-400">
+              <span>₹1000</span>
+              <span>₹10000</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-                  {/* Seat Range */}
-                  <div>
-                    <label className="text-sm font-medium text-gray-300 mb-2 block">Seat Range</label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <Input
-                        type="number"
-                        placeholder="Min Seats"
-                        value={filters.minSeats}
-                        onChange={(e) => handleFilterChange('minSeats', e.target.value)}
-                        className="glass border-white/30 text-white"
-                      />
-                      <Input
-                        type="number"
-                        placeholder="Max Seats"
-                        value={filters.maxSeats}
-                        onChange={(e) => handleFilterChange('maxSeats', e.target.value)}
-                        className="glass border-white/30 text-white"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Clear Filters */}
-                  <Button 
-                    onClick={clearFilters}
-                    variant="outline"
-                    className="w-full border-red-500/30 text-red-400 hover:bg-red-500/10"
-                  >
-                    <div className="flex items-center justify-between">
-                      <X className="w-4 h-4 mr-2" />
-                      Clear All Filters
-                    </div>
-                  </Button>
-                </div>
-              </SheetContent>
+      {/* Seat Range */}
+      <div>
+        <label className="text-sm font-medium text-gray-300 mb-2 block">Seat Range</label>
+        <select
+          value={`${filters.minSeats}-${filters.maxSeats}`}
+          onChange={(e) => {
+            const [min, max] = e.target.value.split('-').map(Number);
+            handleFilterChange('minSeats', min);
+            handleFilterChange('maxSeats', max);
+          }}
+          className="glass text-white bg-white p-2 rounded w-full"
+        >
+          <option className="text-black" value="5">5 Seats</option>
+         
+          <option className="text-black" value="7">7 Seats</option>
+        </select>
+      </div>
+    </div>
+    
+    {/* Clear Filters - Stays fixed at bottom */}
+    <div className="mt-auto pt-4">
+      <Button 
+        onClick={clearFilters}
+        variant="outline"
+        className="w-full border-red-500/30 text-red-400 hover:bg-red-500/10"
+      >
+        <div className="flex items-center justify-between">
+          <X className="w-4 h-4 mr-2" />
+          Clear All Filters
+        </div>
+      </Button>
+    </div>
+  </div>
+</SheetContent>
             </Sheet>
           </div>
 

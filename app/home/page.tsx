@@ -125,16 +125,16 @@ export default function HomePage() {
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            <a href="/home" className="text-gray-300 hover:text-white transition-colors">
+            <a href="/home" className="text-orange-400 hover:text-white transition-colors">
               Home
             </a>
-            <a href="/cars" className="text-gray-300 hover:text-white transition-colors">
+            <a href="/cars" className="text-orange-400 hover:text-white transition-colors">
               Cars
             </a>
-            <a href="/about" className="text-gray-300 hover:text-white transition-colors">
+            <a href="/about" className="text-orange-400 hover:text-white transition-colors">
               About
             </a>
-            <a href="/help" className="text-gray-300 hover:text-white transition-colors">
+            <a href="/help" className="text-orange-400 hover:text-white transition-colors">
               Support
             </a>
           </div>
@@ -149,12 +149,12 @@ export default function HomePage() {
               </Button>
             ) : (
               <>
-                <Button onClick={() => router.push("/auth")} variant="ghost" className="text-white hover:bg-white/10">
+                <Button onClick={() => router.push("/auth")} variant="ghost" className="text-orange-400 hover:bg-white/10">
                   Sign In
                 </Button>
                 <Button
                   onClick={() => router.push("/auth")}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 "
                 >
                   Get Started
                 </Button>
@@ -624,7 +624,7 @@ export default function HomePage() {
               HanumanCars
             </span>
               </div>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-white leading-relaxed">
                 Experience the future of car rental with premium vehicles and exceptional service.
               </p>
             </div>
@@ -632,18 +632,19 @@ export default function HomePage() {
             <div className="space-y-4">
               <h3 className="text-white font-semibold">Quick Links</h3>
               <div className="space-y-2">
-                <a href="#features" className="block text-gray-400 hover:text-white transition-colors">
+                {/* <a href="#features" className="block text-orange-400 hover:text-white transition-colors"> */}
+                <a href="#features" className="block text-orange-400 transition-colors">
                   Features
                 </a>
-                <a href="#cars" className="block text-gray-400 hover:text-white transition-colors">
+                <a href="#cars" className="block text-orange-400 transition-colors">
                   Cars
                 </a>
-                <a href="#about" className="block text-gray-400 hover:text-white transition-colors">
+                <a href="#about" className="block text-orange-400 transition-colors">
                   About
                 </a>
                 <button
                   onClick={() => router.push("/help")}
-                  className="block text-gray-400 hover:text-white transition-colors"
+                  className="block text-orange-400 transition-colors"
                 >
                   Help
                 </button>
@@ -653,25 +654,25 @@ export default function HomePage() {
             <div className="space-y-4">
               <h3 className="text-white font-semibold">Services</h3>
               <div className="space-y-2">
-                <span className="block text-gray-400">Car Rental</span>
-                <span className="block text-gray-400">Premium Fleet</span>
-                <span className="block text-gray-400">24/7 Support</span>
-                <span className="block text-gray-400">Insurance</span>
+                <span className="block text-orange-400">Car Rental</span>
+                <span className="block text-orange-400">Premium Fleet</span>
+                <span className="block text-orange-400">24/7 Support</span>
+                <span className="block text-orange-400">Insurance</span>
               </div>
             </div>
 
             <div className="space-y-4">
               <h3 className="text-white font-semibold">Contact</h3>
               <div className="space-y-2">
-                <span className="block text-gray-400 ">hanumancars0520@gmail.com</span>
-                <span className="block text-gray-400">+91  9392732341</span>
-                <span className="block text-gray-400">Hyderabad, India</span>
+                <span className="block text-orange-400">hanumancars0520@gmail.com</span>
+                <span className="block text-orange-400">+91  9392732341</span>
+                <span className="block text-orange-400">Hyderabad, India</span>
               </div>
             </div>
           </div>
 
           <div className="border-t border-white/10 mt-12 pt-8 text-center">
-            <p className="text-gray-400">
+            <p className="text-orange-400">
               © 2024 HanumanCars. All rights reserved. Built with for the future of mobility.
             </p>
           </div>
